@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::resource('missao', 'MissaoValoresController');
+Route::resource('documentos', 'DocumentosController');
+Route::resource('cursos', 'CursosController');
