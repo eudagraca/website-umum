@@ -1,7 +1,8 @@
 <div class="uk-text-justify uk-margin-remove-top" uk-grid>
     <div class="uk-width-expand@m">
         <div class="uk-card">
-            <form>
+            <form action="{{ route('missao.store') }}" method="POST">
+                @csrf
                 <fieldset class="uk-fieldset uk-flex-center">
 
                     <legend class="uk-margin uk-text-bold uk-h3 uk-margin-remove-adjacent">Missão |
@@ -10,12 +11,18 @@
 
                     <div class="uk-margin">
                         <label class="uk-form-label">Titulo</label>
-                        <input class="uk-input" name="titulo" type="text" placeholder="Missão | Valores | Visão">
+                        <input required autocomplete="false" class="uk-input @error('titulo') uk-form-danger @enderror" value="{{ old('titulo', '') }}" name="titulo" type="text" placeholder="Missão | Valores | Visão">
+                        @error('titulo')
+                        <div class="uk-text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="uk-margin">
                         <label class="uk-form-label">Descrição</label>
-                        <textarea class="uk-textarea " rows="7" name="descricao" placeholder="Descrição"></textarea>
+                        <textarea required autocomplete="false" class="uk-textarea @error('descricao') uk-form-danger @enderror" rows="7" name="descricao" placeholder="Descrição">{{ old('descricao', '') }}</textarea>
+                        @error('descricao')
+                        <div class="uk-text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="uk-width-1-1@s">
                         <button class="btn btn-outline-success uk-align-right my-2 my-sm-0 uk-margin">Gravar</button>

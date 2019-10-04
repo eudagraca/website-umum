@@ -3,23 +3,13 @@
     <div class="uk-card uk-flex uk-card-default uk-border-rounded uk-grid-collapse uk-child-width-1-3@s uk-margin" uk-grid
         uk-scrollspy-class="uk-animation-slide-bottom">
 
-        <div>
-            <div class="uk-card-body uk-text-justify">
-                <h3 class="uk-card-title">Media Left</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        @foreach ($valores as $valor)
+        <div class="uk-width-1-2">
+            <div class="uk-card-body uk-text-justify uk-text-break">
+                <h3 class="uk-card-title uk-text-bold">{{ $valor->titulo }}</h3>
+                <p class="">{{ $valor->descricao }}</p>
             </div>
         </div>
-        <div>
-            <div class="uk-card-body uk-text-justify">
-                <h3 class="uk-card-title">Media Left</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-            </div>
-        </div>
-        <div>
-            <div class="uk-card-body uk-text-justify">
-                <h3 class="uk-card-title">Media Left</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>

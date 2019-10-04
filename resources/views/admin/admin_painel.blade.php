@@ -4,7 +4,6 @@ UMUM
 @endsection
 
 @section('body')
-
 @include('layouts.lema')
 
 <div class="uk-margin-large">
@@ -15,6 +14,7 @@ UMUM
                 <li><a href="#">Cursos de Graus</a></li>
                 <li><a href="#">Artigos</a></li>
                 <li><a href="#">Documentos</a></li>
+                <li><a href="#">Usuario</a></li>
 
             </ul>
         </div>
@@ -24,6 +24,7 @@ UMUM
                 @include('admin.cursos')
                 @include('news.index')
                 @include('documentos.create')
+                @include('auth.register')
             </ul>
         </div>
     </div>

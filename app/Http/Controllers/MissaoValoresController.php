@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Valor;
+use App\Http\Requests\ValoresRequest;
 
 class MissaoValoresController extends Controller
 {
@@ -23,6 +25,7 @@ class MissaoValoresController extends Controller
      */
     public function create()
     {
+        return view('admin.admin_painel');
     }
 
     /**
@@ -31,9 +34,10 @@ class MissaoValoresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValoresRequest $request)
     {
-        //
+        Valor::create($request->all());
+        return redirect('\missao')->with('success',  $request->input('titulo').' guardado com sucesso');
     }
 
     /**
