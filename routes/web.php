@@ -16,6 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('missao', 'MissaoValoresController');
 Route::resource('documentos', 'DocumentosController');
 Route::resource('cursos', 'CursosController');
+Route::resource('banner', 'BannerController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

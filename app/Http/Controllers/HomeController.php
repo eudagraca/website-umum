@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Valor;
-
+use App\Banner;
 class HomeController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -24,6 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index', ['valores' => Valor::orderBy('titulo', 'asc')->get()]);
+        return view('index', ['valores' => Valor::orderBy('titulo', 'asc')->get()])->with('banners', Banner::all());
     }
 }

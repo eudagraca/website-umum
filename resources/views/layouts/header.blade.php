@@ -10,7 +10,9 @@
         </div>
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav uk-visible@s">
-                <li class="uk-active">
+               
+                @guest
+                 <li class="uk-active">
                     <a href="#noticias-recentes">Blog</a>
                 </li>
                 <li class="uk-active">
@@ -22,13 +24,15 @@
                 <li class="uk-active">
                     <a href="#">Sobre nós</a>
                 </li>
-                @guest
                 <li class="uk-active" id="btn-login">
                     <a href="{{ route('login') }}"> <button class="btn btn-outline-danger my-2 my-sm-0" href="#"
                             tabindex="-1" aria-disabled="true">Login</button> </a>
                 </li>
 
                 @else
+                <li class="uk-active">
+                    <a href="/missao">Painel de admnistrador</a>
+                </li>
 
                 <li class="uk-active">
                     <a href=""> <button class="btn btn-outline-danger my-2 my-sm-0" href="#" tabindex="-1"
@@ -37,7 +41,11 @@
                         <ul class="uk-nav uk-dropdown-nav">
                             <li class="uk-nav-header"><a href="">Perfil</a></li>
                             <li class="uk-nav-divider"></li>
-                            <li class="uk-nav-header"><a href="{{ __('sair') }}">Logout</a>
+                            <li class="uk-nav-header"><a  href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
                                     @csrf
