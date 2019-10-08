@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Valor;
 use App\Banner;
+use App\Conquista;
+
 class HomeController extends Controller
 {
     /**
@@ -24,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index', ['valores' => Valor::orderBy('titulo', 'asc')->get()])->with('banners', Banner::all());
+
+        return view
+        ('index', [
+            'valores' => Valor::orderBy('titulo', 'asc')->get(),
+            'conquista' => Conquista::orderBy('id', 'desc')->take(1)->get()
+            ]
+        )->with('banners', Banner::all());
+
     }
 }

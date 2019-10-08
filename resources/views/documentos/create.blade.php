@@ -6,7 +6,7 @@
             <form class="uk-grid-small" uk-grid>
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Documento referente a </label>
-                    <input class="uk-input" name="referencia" type="text" placeholder="De que se rata?">
+                    <input class="uk-input" name="referencia" type="text" placeholder="De que se trata?">
                 </div>
                 <div class="uk-width-1-2@s">
                     <label class="uk-form-label">Nome</label>

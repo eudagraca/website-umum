@@ -52,6 +52,8 @@ class BannerController extends Controller
             // Pegar a extensao
             $extensio = $request->file('imagem')->getClientOriginalExtension();
             // Nome a ser armazenado
+            
+            //extensao permitidas jpg png jpeg
             $filenameToStore = $filename.'_'.time().'.'.$extensio;
             // Upload imagem
             $path = $request->file('imagem')->storeAs('public/banner_images', $filenameToStore);

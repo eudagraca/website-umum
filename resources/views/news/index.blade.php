@@ -1,4 +1,4 @@
-<div class="uk-container">
+<div class="uk-padding-large-bottom" style="margin:0 5%; padding:1%">
 
 
     <div class="noticias-recentes" id="noticias-recentes">
@@ -7,7 +7,7 @@
 
         <div id="container-noticias" class="uk-grid-column-small uk-grid-row-large uk-child-width-1-3@s" uk-grid>
             <?php $n = 0  ?>
-            @while ($n<4) <div>
+            @while ($n<3) <div>
                 <div class="uk-card uk-card-default uk-card-body card-k uk-border-rounded uk-text-break uk-transition-toggle uk-padding-remove uk-grid-collapse uk-grid itens-shared"
                     style="border: 1px solid rgb(255, 33, 74);">
 
@@ -21,8 +21,8 @@
                     </div>
 
                     <div class="uk-width-expand">
-                        <p class="uk-margin-remove uk-text-truncate">Title</p>
-                        <p class="uk-margin-remove uk-text-truncate">Info start</p>
+                        <p class="uk-margin-remove-right uk-margin-remove-left uk-margin-remove-bottom uk-margin-top uk-text-truncate uk-text-lead">Title</p>
+                        <p class="uk-margin-remove uk-text-truncate uk-text-large uk-text-light">Info start</p>
                         <span class="uk-comment-meta uk-margin-remove-top">
                             <small>07 Jun, 2018 – 08:50</small><br>
                             <span style="text-transform: none;"

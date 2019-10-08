@@ -18,12 +18,8 @@ UMUM
 @include('layouts.nossas-conquistas')
 
 @include('news.index')
-<a href=""
+<a href="" style="margin-bottom:3%!important"
     class="uk-button uk-button-default uk-margin-bottom uk-margin-large-left uk-button-small uk-text-warning uk-border-rounded uk-text-small uk-text-light"><span
         uk-icon="triangle-right" style="position: relative; bottom: 1px" class="uk-icon"></span>Mais Notícias...</a>
 
-@include('eventos.index')
-<a href=""
-    class="uk-button uk-button-default uk-margin-bottom uk-margin-large-left uk-button-small uk-text-warning uk-border-rounded uk-text-small uk-text-light"><span
-        uk-icon="triangle-right" style="position: relative; bottom: 1px" class="uk-icon"></span>Mais Eventos...</a>
 @endsection

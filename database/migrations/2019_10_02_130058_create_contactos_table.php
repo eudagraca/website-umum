@@ -19,7 +19,7 @@ class CreateContactosTable extends Migration
             $table->string('celular');
             $table->string('whatsapp');
             $table->string('localizacao');
-
+            
         });
     }
 

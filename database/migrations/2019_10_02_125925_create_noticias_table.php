@@ -19,6 +19,7 @@ class CreateNoticiasTable extends Migration
             $table->string('titulo');
             $table->string('descricao');
             $table->string('tag')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

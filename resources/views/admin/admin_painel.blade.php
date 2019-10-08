@@ -14,6 +14,7 @@ UMUM
                 <li><a href="#">Missao e valores</a></li>
                 <li><a href="#">Cursos de Graus</a></li>
                 <li><a href="#">Artigos</a></li>
+                <li><a href="#">Conquistas</a></li>
                 <li><a href="#">Documentos</a></li>
                 <li><a href="#">Usuario</a></li>
 
@@ -25,6 +26,7 @@ UMUM
                 @include('admin.missao_valores')
                 @include('admin.cursos')
                 @include('news.index')
+                @include('conquistas.create')
                 @include('documentos.create')
                 @include('auth.register')
             </ul>
