@@ -11,19 +11,20 @@ UMUM
 
 
     <h2 class="uk-heading-bullet uk-text-bold uk-text-muted uk-remove-margin">Documentos</h1>
-        
+      @foreach ($documentos as $item)  
     <div style="border: 2px solid orange;"
-        class="uk-card uk-card-default uk-grid-collapse uk-padding-medium uk-margin-large-bottom@s uk-grid uk-grid-stack"
+        class="uk-card uk-margin-bottom uk-card-default uk-grid-collapse uk-padding-medium uk-margin-large-bottom@s uk-grid uk-grid-stack"
         uk-grid="">
 
-
+        
+           
         <div class="uk-background-cover uk-width-expand@m uk-first-column" style="background-color: white;">
             <div class="uk-card-body">
-                <span style="text-transform: none;" class="uk-label uk-label-warning uk-margin-small"><small>hastag</small></span>
+                <span style="text-transform: none;" class="uk-label uk-label-warning uk-margin-small"><small>{{$item->tag}}</small></span>
 
-                <h3 class="uk-margin-remove-top uk-margin-remove-bottom uk-text-bold">Mobilidade Internacional</h3>
+                <h3 class="uk-margin-remove-top uk-margin-remove-bottom uk-text-bold"> {{$item->nome}}</h3>
                 <p class="uk-margin-remove-bottom">
-                    Descricao da publicacao do documento
+                    {{$item->descricao}}
                 </p>
                 <div class="uk-overflow-auto uk-border-rounded uk-margin-small-top">
                     <table class="uk-table uk-table-middle uk-table-small uk-dark">
@@ -36,10 +37,10 @@ UMUM
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="uk-text-bold">Nome do documento
+                                <td class="uk-text-bold">{{$item->nome}}
                                 </td>
                                 <td class="uk-text-right">
-                                    <button class="btn btn-success uk-align-right my-2 my-sm-0 uk-margin">PDF <span uk-icon="cloud-download"></span></button>
+                                <button class="btn btn-success uk-align-right my-2 my-sm-0 uk-margin"><a style="color:aliceblue;" download="{{$item->ficheiro}}" href="{{Storage::url('/documentos/'. $item->ficheiro)}}" title="{{$item->ficheiro}}">PDF <span uk-icon="cloud-download"></span></a></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -47,6 +48,12 @@ UMUM
                 </div>
             </div>
         </div>
+        
+       
     </div>
+    
+     @endforeach
+
+     {{$documentos->links()}}
 </div>
 @endsection
