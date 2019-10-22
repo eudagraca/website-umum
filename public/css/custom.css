@@ -3,8 +3,9 @@
 }
 
 * {
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Nunito',
+    sans-serif;
+    font-size: medium
 }
 
 .slider-cursos {
@@ -31,12 +32,12 @@ ul.uk-slideshow-items {
 }
 
 .missao.visao {
-    margin: -8rem auto;
+    margin: -15rem auto;
     width: 70%;
 }
 
 .cursos {
-    margin: 10rem auto auto auto;
+    margin: 15rem auto auto auto;
 }
 
 a.curso-item {
@@ -115,6 +116,26 @@ a.curso-item {
 #lema{
 margin-bottom: -1rem;
     border-radius:10px;
-    margin-left: 15%;
+    margin-left: 10%;
     border:  1px solid rgb(247, 246, 246) !important;
+}
+
+.hidden-up-to-s {
+    display: none;
+}
+
+@media (min-width: 640px) {
+
+    /* @breakpoint-small */
+    .hidden-up-to-s {
+        display: block;
+    }
+}
+
+.ck-editor__editable {
+    min-height: 200px;
+}
+
+.ck.ck-editor__editable_inline {
+    border: 1px dashed #8b8b8bfa !important;
 }

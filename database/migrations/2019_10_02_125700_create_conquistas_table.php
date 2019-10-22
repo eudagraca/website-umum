@@ -20,7 +20,7 @@ class CreateConquistasTable extends Migration
             $table->integer('docentes');
             $table->integer('estudantes');
             $table->integer('campus');
-            $table->string('imagem');
+            $table->string('imagem')->nullable();
             $table->timestamps();
 
         });

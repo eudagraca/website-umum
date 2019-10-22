@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Contacto;
+use App\Conquista;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \View::share('contactos', Contacto::get()->first());
+        \View::share('conquista', Conquista::get()->first());
     }
 }

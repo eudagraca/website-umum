@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Conquista;
+use App\Http\Requests\ConquistaRequest;
 
 class ConquistasController extends Controller
 {
@@ -15,7 +16,7 @@ class ConquistasController extends Controller
     public function index()
     {
         //
-       return view('layouts.nossas-conquistas')->with('conquista', Conquista::orderBy('id', 'desc')->take(1)->get());
+       return view('conquistas.index')->with('conquistas', Conquista::orderBy('id', 'desc')->take(1)->get());
     }
 
     /**
@@ -25,7 +26,7 @@ class ConquistasController extends Controller
      */
     public function create()
     {
-        //
+        return view('conquistas.create')->with('conquistas', Conquista::all());
     }
 
     /**
@@ -34,12 +35,11 @@ class ConquistasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ConquistaRequest $request)
     {
         //
         $conquista = Conquista::create($request->all());
-        return redirect('/missao');
-    
+        return redirect('/conquistas/create')->with('success', 'Gravado com sucesso');
     }
 
     /**

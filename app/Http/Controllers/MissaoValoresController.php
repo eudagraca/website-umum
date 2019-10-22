@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Valor;
+use App\Banner;
+use App\Curso;
 use App\Http\Requests\ValoresRequest;
 
 class MissaoValoresController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,9 @@ class MissaoValoresController extends Controller
      */
     public function index()
     {
-        return view('admin.admin_painel');
+
+        return view('missao.page')->with('contents', Valor::all());
+
     }
 
     /**
@@ -25,7 +34,7 @@ class MissaoValoresController extends Controller
      */
     public function create()
     {
-        return view('admin.admin_painel');
+        return view('missao.create')->with('missoes', Valor::all());
     }
 
     /**
@@ -37,7 +46,7 @@ class MissaoValoresController extends Controller
     public function store(ValoresRequest $request)
     {
         Valor::create($request->all());
-        return redirect('\missao')->with('success',  $request->input('titulo').' guardado com sucesso');
+        return redirect('missao/create')->with('success',  $request->input('titulo').' guardado com sucesso');
     }
 
     /**

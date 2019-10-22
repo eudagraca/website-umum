@@ -1,16 +1,18 @@
 <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
     uk-slideshow="animation: scale; ratio: 800:500; autoplay: true">
 
-    <ul class="uk-slideshow-items">
-        @foreach ($banners as $banner)
+    <ul class="uk-slideshow-items uk-align-center">
+        @forelse  ($banners as $banner)
             <li>
             <img src="storage/banner_images/{{$banner->imagem}}" alt="" uk-cover>
-            <div class="uk-overlay uk-overlay-primary uk-preserve-color uk-position-center uk-text-center uk-transition-slide-center">
+            <div class="uk-overlay uk-overlay-primary uk-preserve-color uk-position-top uk-text-left uk-transition-slide-center">
                 <h3 class="uk-margin-remove">{{$banner->titulo}}</h3>
-                <p class="uk-margin-remove">{{$banner->descricao}}</p>
+                <p class="uk-margin-remove">{!!$banner->descricao !!}</p>
             </div>
         </li>
-        @endforeach
+        @empty
+        {{--  Image empty --}}
+        @endforelse
     </ul>
 
     <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous

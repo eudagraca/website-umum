@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Valor;
 use App\Banner;
 use App\Conquista;
+use App\Curso;
+use App\Valor;
+use App\Contacto;
+use GuzzleHttp\Client;
 
 class HomeController extends Controller
 {
@@ -26,13 +28,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $client = new Client();
+        $res = $client->get('http://127.0.0.1:8000/estudantes', ['auth' => ['user', 'pass']]);
+        $data = json_decode($res->getBody(), true);
 
         return view
         ('index', [
             'valores' => Valor::orderBy('titulo', 'asc')->get(),
-            'conquista' => Conquista::orderBy('id', 'desc')->take(1)->get()
-            ]
-        )->with('banners', Banner::all());
+            'conquista' => Conquista::orderBy('id', 'desc')->take(1)->get(),
+            'cursos' => Curso::all(),
+            'estudantes' => count($data),
+        ]
+        )->with('banners', Banner::where('status', '1')->get());
 
     }
 }

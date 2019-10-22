@@ -18,11 +18,12 @@ class CreateCursosTable extends Migration
             $table->string('imagem');
             $table->string('grau_id');
             $table->string('nome');
-            $table->string('ciclo');
-            $table->string('perfil_saida');
-            $table->string('plano_curicular');
-            $table->string('admissao');
-            $table->string('regime');
+            $table->text('ciclo')->nullable();
+            $table->text('perfil_saida')->nullable();
+            $table->text('plano_curicular')->nullable();
+            $table->text('admissao')->nullable();
+            $table->text('variante')->nullable();
+            $table->string('regime')->nullable();
         });
     }
 

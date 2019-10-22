@@ -25,7 +25,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('slide.create ')->with('banners', Banner::all());
     }
 
     /**
@@ -36,12 +36,6 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $this->validate($request, [
-            'titulo' => 'required',
-            'descricao' => 'required',
-            'imagem' => 'image|required|max:1999'
-        ]);
 
         // File upload
         if($request->hasFile('imagem')){
@@ -52,7 +46,7 @@ class BannerController extends Controller
             // Pegar a extensao
             $extensio = $request->file('imagem')->getClientOriginalExtension();
             // Nome a ser armazenado
-           
+
             //extensao permitidas jpg png jpeg
             $filenameToStore = $filename.'_'.time().'.'.$extensio;
             // Upload imagem
@@ -68,7 +62,7 @@ class BannerController extends Controller
         $banner->imagem = $filenameToStore;
         $banner->save();
 
-        return redirect('/missao');
+        return redirect('/adm')->with('success', 'Banner '.$request->input('titulo'). ' adicionado');
     }
 
     /**
@@ -90,7 +84,16 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('slide.edit', ['banners' => Banner::all()])->with('banner', Banner::find($id));
+    }
+
+    public function changeStatus(Request $request){
+        $retVal = ($request->status) ? 1 : 0;
+        $banner = Banner::find($request->id);
+        $banner->status = (string) $retVal;
+        $banner->save();
+
+        return ($request->status) ? 0 : 1;
     }
 
     /**
@@ -106,7 +109,7 @@ class BannerController extends Controller
          $this->validate($request, [
             'titulo' => 'required',
             'descricao' => 'required',
-            'imagem' => 'image|nullable|max:1999'
+            'imagem' => 'image|nullable|max:1999|mimes:png,jpg'
         ]);
 
         // File upload
@@ -129,9 +132,9 @@ class BannerController extends Controller
         if ($request->hasFile('imagem')) {
             $banner->imagem = $filenameToStore;
         }
-        
-        $banner->save();
 
+        $banner->save();
+        return redirect('/admn')->with('success', 'Banner '. $request->input('titulo').' actualizado');
     }
 
     /**
@@ -146,5 +149,6 @@ class BannerController extends Controller
         $banner = Banner::find($id);
         Storage::delete('public/banner_images'.$banner->imagem);
         $banner->delete();
+        return redirect('/adm')->with('success', 'Banner apagado');
     }
 }

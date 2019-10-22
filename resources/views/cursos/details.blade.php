@@ -7,71 +7,77 @@ UMUM
 
 @include('layouts.lema')
 <div class="uk-section uk-margin-remove uk-padding-remove">
-<div style="background: rgb(255, 33, 74)" class="uk-card uk-width-1-2 uk-card-primary uk-card-body" id="lema">
-    <h3 class="uk-heading-bulle-small uk-text-bold uk-text-muted">
-        <span>Engenharia Infomatica</span>
-    </h3>
-    <div class="uk-card">
-        <div class="uk-align-right"
-            style="border: 1px solid #ffeff3; border-radius: 5px;">
-            <div class="uk-card-body">
-                <h3 class="uk-card-title">Media Left</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                <a href="url details"><span
-                        style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;"
-                        class="linkSpanner"></span></a>
-            </div>
-        </div>
-    </div>
-</div>
-    <div class="uk-container-small uk-margin-large-left uk-margin-medium-right">
 
-        <div>
+    <div>
+        <div uk-grid class="uk-grid uk-margin-right uk-margin-left">
+            <div class="uk-width-expand@m">
+                <div style="background: rgb(255, 33, 74)"
+                    class="uk-card uk-width-1-1 uk-align-center uk-card-primary uk-card-body" id="">
+                    <h3 class="uk-heading-bulle-small uk-h3 uk-text-bold uk-text-muted">
+                        {{ $curso->nome }}
+                    </h3>
 
-            <div class="uk-card uk-card-default uk-card-large uk-card-body uk-border-rounded" style="border: 1px solid rgb(255, 33, 74);">
-                <h1 class="uk-heading-line"> <span class="uk-label uk-label-success">Ciclos de estudos</span></h1>
-                <div class="uk-text-justify">
-                    <p> Este curso pretende formar profissionais no âmbito das Tecnologias e Sistemas de Informação.
-                        Este curso abre oportunidades de carreira em:</p>
-                    <p><span uk-icon="bookmark"></span> Organizações dos sectores económicos; </p>
-                    <p>2) Áreas diversificadas tais como especialista em desenvolvimento de produção de equipamentos e
-                        software informático e de programação (aplicações para ambiente Web, programação visual
-                        orientada a objectos); </p>
-                    <p>3) Este curso oferece oportunidades também para a análise de sistemas transaccionais, de suporte
-                        à decisão, especialista no levantamento e redefinição de processos organizacionais a serem
-                        informatizados, para operação e manutenção
-                        de sistemas informáticos. O curso é ministrado no primeiro ciclo. Este primeiro ciclo pretende
-                        oferecer um tronco comum para um curso de 2º ciclo que aprofunda os conhecimento científicos em
-                        áreas afins à Informática.</p>
                 </div>
+                <div class="uk-container-small uk-margin-large-bottom uk-margin-remove-top">
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-large uk-card-body uk-border-rounded uk-padding-large"
+                            style="border: 1px solid rgb(255, 33, 74);">
+                            <h1 class="uk-heading-line"> <span class="uk-label uk-label-success uk-text-bold">Ciclos de
+                                    estudos</span></h1>
+                            <div class="uk-text-justify">
+                                <p class="uk-text-secondary">{!! $curso->ciclo !!}</p>
+                            </div>
 
-                <h1 class="uk-heading-line"> <span class="uk-label uk-label-success">Objectivos e perfil de saída</span>
-                </h1>
-                <div class="uk-text-justify">
-                    <p> Espera-se que no final do 1º Ciclo os estudantes sejam capazes de:</p>
-                    <p>1) Aplicar conhecimentos de computação e matemática adequada à disciplina;</p>
-                    <p> 2) Analisar, identificar e definir os requisitos de computação apropriados para solucionar um
-                        problema na área e desenvolver um plano de projeto eficaz;</p>
-                    <p> 3) Conceber, implementar e avaliar um sistema computacional, ou um programa;</p>
-                    <p> 4) Trabalhar em equipe tanto presencialmente como a distância;</p>
-                    <p>5) Compreender responsabilidades profissionais e de ética, perceber as suas implicações na área;
-                    </p>
-                    <p>6) Comunicar de forma eficaz e profissionalmente;</p>
-                    <p>7) Analisar o impacto da computação em indivíduos, organizações e na sociedade;</p>
-                    <p> 8) Reconhecer a necessidade de se envolver no desenvolvimento profissional contínuo;</p>
-                    <p> 9) Aplicar conceitos actuais e utilizar as técnicas e ferramentas necessárias para a prática de
-                        Sistemas e Tecnologias de Informação; </p>
-                    <p> 10) Desenvolver soluções eficazes e eficientes e compreender as práticas e normas e sua
-                        aplicação em contextos actuais.</p>
-                    <p>Assim, como, também se espera que o estudante fique apto a desempenhar funções em organizações de
-                        todos os sectores económicos que usam computadores: Bancos, Companhias de Seguros, Empresas
-                        Industriais, Empresas de Serviços, Telecomunicações,
-                        Administração Pública, Fornecedores de Equipamentos Informáticos, Empresas de Desenvolvimento de
-                        Software, Ensino, Etc.</p>
+                            @if(!empty($curso->admissao))
+                            <h1 class="uk-heading-line"> <span class="uk-label uk-label-success uk-text-bold">Admissão
+                                    ao curso</span>
+                            </h1>
+                            <div class="uk-text-justify">
+                                <p class="uk-text-secondary">{!! $curso->admissao !!}</p>
+                            </div>
+                            @endif
+
+                            <h1 class="uk-heading-line"> <span class="uk-label uk-label-success uk-text-bold">Objectivos
+                                    e perfil de
+                                    saída</span>
+                            </h1>
+                            <div class="uk-text-justify">
+                                <p class="uk-text-secondary uk-text-normal">
+                                    {!! $curso->perfil_saida !!}</p>
+                            </div>
+                            <div class="uk-text-justify">
+                                <p class="uk-text-secondary">
+                                    {!! $curso->variante!!}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="uk-width-1-4@m uk-margin-remove-left">
 
+                <div class="uk-card">
+                    <div class="uk-align-right uk-margin-remove-left"
+                        style="border: 1px solid rgb(223, 223, 223); border-radius: 5px;">
+                <div class="uk-card-body uk-padding-small uk-box-shadow-hover-large">
+                    <h3 class="uk-text-bold uk-h4">
+                            <h3 class="uk-text-truncate uk-margin-remove-top uk-text-muted uk-text-bold uk-h4">Plano de estudos</h3>
+                            <div class="uk-divider-small uk-margin-remove-top"></div>
+                            <p class="uk-text-bold">{{ $curso->nome }}</p>
+                            <p class="uk-text-muted uk-margin-remove-top uk-margin-remove-bottom">{{ $curso->regime }}
+                            </p>
+                            <a href="url details"><span
+                                    style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;"
+                                    class="linkSpanner"></span></a>
+
+                            <a class="btn btn-danger uk-align-right my-2 my-sm-0 uk-margin-remove-top"
+                                style="color:aliceblue;" download=""
+                                href="{{Storage::url('/plano_curicular/'. $curso->plano_curicular)}}"
+                                title="Baixar PDF">PDF <span uk-icon="cloud-download"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

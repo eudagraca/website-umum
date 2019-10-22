@@ -3,8 +3,7 @@
     style="background-color: #fcfcfc; border-radius: 10px !important; border: 1px solid rgb(243, 242, 242) ">
     <div class="uk-width-1-1 uk-margin-remove uk-padding-remove">
         <div class="uk-card-body uk-align-center uk-text-center">
-            <p class="uk-align-center uk-h3 uk-text-bold uk-text-muted">Por uma universidade enraizada na pesquisa
-                científica rumo ao desenvolvimento.</p>
+            <p class="uk-align-center uk-h3 uk-text-bold uk-text-muted uk-text-warning">{{ $conquista['descricao'] }}</p>
         </div>
     </div>
 </div>
