@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    public function index(){
+        return Page::all();
+    }
+
     public function qualidade()
     {
         if (Page::where('titulo', 'Qualidade')->exists()) {
@@ -119,33 +123,33 @@ class PageController extends Controller
 
         if ($request->hasFile('imagem_destaque')) {
                 //Pegar o nome com extensao
-                $filenameWithExt = $image->getClientOriginalName();
+                $filenameWithExt = $request->file('imagem_destaque')->getClientOriginalName();
                 // Pegar o nome do ficheiro
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 // Pegar a extensao
-                $extension = $image->getClientOriginalExtension();
+                $extension = $request->file('imagem_destaque')->getClientOriginalExtension();
                 // Nome a ser armazenado
 
                 //extensao permitidas jpg png jpeg
                 $imageNameDestaque = $filename . '_' . time() . '.' . $extension;
                 // Upload imagem
-                $path = $image->storeAs('public/page_images', $imageNameDestaque);
+                $path = $request->file('imagem_destaque')->storeAs('public/page_images', $imageNameDestaque);
 
         }
 
         if ($request->hasFile('imagem_texto')) {
 
-                $filenameWithExt = $image->getClientOriginalName();
+                $filenameWithExt = $request->file('imagem_texto')->getClientOriginalName();
                 // Pegar o nome do ficheiro
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 // Pegar a extensao
-                $extension = $image->getClientOriginalExtension();
+                $extension = $request->file('imagem_texto')->getClientOriginalExtension();
                 // Nome a ser armazenado
 
                 //extensao permitidas jpg png jpeg
                 $imageNameTexto = $filename . '_' . time() . '.' . $extension;
                 // Upload imagem
-                $path = $image->storeAs('public/page_images', $imageNameTexto);
+                $path = $request->file('imagem_texto')->storeAs('public/page_images', $imageNameTexto);
 
         }
 

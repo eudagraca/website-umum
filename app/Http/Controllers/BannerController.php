@@ -59,6 +59,7 @@ class BannerController extends Controller
         $banner = new Banner;
         $banner->titulo = $request->input('titulo');
         $banner->descricao = $request->input('descricao');
+        $banner->status = '1';
         $banner->imagem = $filenameToStore;
         $banner->save();
 
@@ -133,8 +134,8 @@ class BannerController extends Controller
             $banner->imagem = $filenameToStore;
         }
 
-        $banner->save();
-        return redirect('/admn')->with('success', 'Banner '. $request->input('titulo').' actualizado');
+        $banner->update();
+        return redirect('/adm')->with('success', 'Banner '. $request->input('titulo').' actualizado');
     }
 
     /**

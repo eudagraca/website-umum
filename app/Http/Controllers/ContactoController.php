@@ -58,7 +58,7 @@ class ContactoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return \view('contacts.edit', ['contacts' => Contacto::all()])->with('contacto', Contacto::find($id));
     }
 
     /**
@@ -70,7 +70,9 @@ class ContactoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contacto = Contacto::find($id);
+        $contacto->update($request->all());
+        return \redirect('/contacto/create')->with('success', 'Contacto atualizado com sucesso');
     }
 
     /**
@@ -81,6 +83,8 @@ class ContactoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contacto = Contacto::find($id);
+        $contacto->delete();
+        return redirect('/contacto/create')->with('success', 'Contacto apagado');
     }
 }

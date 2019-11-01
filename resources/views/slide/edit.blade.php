@@ -11,9 +11,10 @@
                 <h4><span style="position: relative; bottom: 2px" uk-icon="plus-circle" class="uk-icon"></span>&nbsp; Banners</h4>
             </div>
             <hr class="uk-divider-small">
-            <form class="uk-grid-small" uk-grid action="{{route('banner.store')}}" method="POST"
+            <form class="uk-grid-small" uk-grid action="{{route('banner.update', $banner->id)}}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Título</label>
                     <input class="uk-input" value="{{ $banner->titulo }}" type="text" name="titulo" placeholder="Título" required>
@@ -25,7 +26,7 @@
 
                 <div class="uk-width-1-1" uk-form-custom="target: true">
                     <label class="uk-form-label">Imagem do banner</label>
-                    <input type="file" name="imagem" value="{{'../../storage/banner_images/'.$banner->imagem }}" required>
+                    <input type="file" name="imagem" value="{{'../../storage/banner_images/'.$banner->imagem }}">
                     <input class="uk-input" type="text" value="{{'../../storage/banner_images/'.$banner->imagem }}" placeholder="Seleccione a imagem do curso" disabled>
 
                 </div>

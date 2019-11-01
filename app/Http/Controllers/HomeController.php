@@ -28,18 +28,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        /* API
         $client = new Client();
         $res = $client->get('http://127.0.0.1:8000/estudantes', ['auth' => ['user', 'pass']]);
         $data = json_decode($res->getBody(), true);
-
+*/
         return view
         ('index', [
             'valores' => Valor::orderBy('titulo', 'asc')->get(),
             'conquista' => Conquista::orderBy('id', 'desc')->take(1)->get(),
             'cursos' => Curso::all(),
-            'estudantes' => count($data),
+            'estudantes' =>  3 /*count($data)*/,
         ]
-        )->with('banners', Banner::where('status', '1')->get());
+        )->with('banners', Banner::where('status', '1')->orderBy('id', 'desc')->get());
 
     }
 }

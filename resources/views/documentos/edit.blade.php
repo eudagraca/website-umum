@@ -9,31 +9,32 @@
                 <h4><span style="position: relative; bottom: 2px" uk-icon="plus-circle" class="uk-icon"></span>&nbsp; Documento</h4>
             </div>
             <hr class="uk-divider-small">
-            <form class="uk-grid-small" action="{{route('documentos.store')}}" method="POST"
+            <form class="uk-grid-small" action="{{route('documentos.update', $doc->id)}}" method="POST"
                 enctype="multipart/form-data" uk-grid>
                 @csrf
+                @method('PUT')
                 <div class="uk-width-1-2@s">
                     <label class="uk-form-label">Documento referente a </label>
-                    <input class="uk-input" name="referencia" type="text" value="{{ old('referencia', '') }}" placeholder="De que se trata?" required>
+                    <input class="uk-input" name="referencia" type="text" value="{{ $doc->referencia }}" placeholder="De que se trata?" required>
                 </div>
                 <div class="uk-width-1-2@s">
                     <label class="uk-form-label">Nome</label>
-                    <input class="uk-input" type="text" name="nome" value="{{ old('nome', '') }}" placeholder="Nome do documento" required>
+                    <input class="uk-input" type="text" name="nome" value="{{ $doc->nome }}" placeholder="Nome do documento" required>
                 </div>
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Descrição</label>
                     <textarea class="uk-textarea" rows="3" type="text" name="descricao"
-                        placeholder="Descrição do documento">{{ old('descricao', '') }}</textarea>
+                        placeholder="Descrição do documento">{{ $doc->descricao }}</textarea>
                 </div>
                 <div class="uk-width-1-2@s">
                     <label class="uk-form-label">Palavra chave</label>
-                    <input class="uk-input" type="text" name="tag" value="{{ old('tag', '') }}" placeholder="Palavra chave">
+                    <input class="uk-input" type="text" name="tag" value="{{ $doc->tag }}" placeholder="Palavra chave">
                 </div>
                 <div class="uk-width-1-2@s" uk-form-custom="target: true">
                     <label class="uk-form-label">Documento</label>
 
-                    <input type="file" name="ficheiro" required>
-                    <input class="uk-input" type="text" value="{{ old('ficheiro', '') }}" placeholder="Clique ou arraste-o até aqui para seleccionar" disabled>
+                    <input type="file" name="ficheiro">
+                    <input class="uk-input" type="text" value="{{ $doc->ficheiro }}" placeholder="Clique ou arraste-o até aqui para seleccionar" disabled>
 
                 </div>
 

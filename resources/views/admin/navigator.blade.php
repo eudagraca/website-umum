@@ -19,8 +19,8 @@ UMUM
                 <li><a href="#">ARTIGOS</a></li>
                 <li><a href="{{ route('conquistas.create') }}">CONQUISTAS</a></li>
                 <li><a href="{{ route('documentos.create') }}">DOCUMENTOS</a></li>
-                <li><a href="{{ route('pages.create') }}">PÁGINAS</a></li>
-                <li><a href="{{ route('register') }}">USUÁRIO</a></li>
+             {{-- Remover a opção de criar paginas  <li><a href="{{ route('pages.create') }}">PÁGINAS</a></li>
+              --}}  <li><a href="{{ route('register') }}">USUÁRIO</a></li>
 
             </ul>
         </div>

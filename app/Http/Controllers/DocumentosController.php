@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Documento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\DocumentoRequest;
 
 class DocumentosController extends Controller
@@ -62,7 +63,7 @@ class DocumentosController extends Controller
         $documento->tag = $request->input('tag');
         $documento->save();
 
-        return redirect('/adm');
+        return redirect('/documentos/create')->with('success', 'Cadastrado com sucesso');
     }
 
     /**
@@ -84,7 +85,7 @@ class DocumentosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('documentos.edit', ['documentos' => Documento::all()])->with('doc', Documento::find($id));
     }
 
     /**
@@ -96,7 +97,32 @@ class DocumentosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->hasFile('ficheiro')) {
+            //Pegar o nome com extensao
+            $filenameWithExt = $request->file('ficheiro')->getClientOriginalName();
+            // Pegar o nome do ficheiro
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Pegar a extensao
+            $extensio = $request->file('ficheiro')->getClientOriginalExtension();
+            // Nome a ser armazenado
+            if ($extensio == 'pdf') {
+                $filenameToStore = $filename . '_' . time() . '.' . $extensio;
+                // Upload imagem
+                $path = $request->file('ficheiro')->storeAs('public/documentos', $filenameToStore);
+            } else {
+                return redirect('/adm')->with('error', 'Só é permitidos ficheiro no formato pdf');
+            }
+            //extensao permitidas jpg png jpeg
+        }
+        $documento =  Documento::find($id);
+        $documento->nome = $request->input('nome');
+        $documento->referencia = $request->input('referencia');
+        $documento->descricao = $request->input('descricao');
+        $documento->ficheiro = isset($filenameToStore) ? $filenameToStore : $documento->ficheiro;
+        $documento->tag = $request->input('tag');
+        $documento->update();
+
+        return redirect('/documentos/create')->with('success', 'Atualizado com sucesso');
     }
 
     /**
@@ -107,6 +133,9 @@ class DocumentosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $documento = Documento::find($id);
+        Storage::delete('public/documentos'.$documento->ficheiro);   
+        $documento->delete();
+        return \redirect('/documentos/create')->with('success', 'Documento removido com sucesso');
     }
 }

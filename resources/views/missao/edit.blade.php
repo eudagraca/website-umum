@@ -4,8 +4,9 @@
 <div class="uk-text-justify uk-margin-remove-top" uk-grid>
     <div class="uk-width-expand@m">
         <div class="uk-card">
-            <form action="{{ route('missao.store') }}" method="POST">
+            <form action="{{ route('missao.update', $valor->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <fieldset class="uk-fieldset uk-flex-center">
                         <div class="uk-alert-warning uk-alert" uk-alert="">
                             <h4><span style="position: relative; bottom: 2px" uk-icon="plus-circle" class="uk-icon"></span>&nbsp; Missão | Valores | Visão</h4>
@@ -14,7 +15,7 @@
 
                     <div class="uk-margin">
                         <label class="uk-form-label">Titulo</label>
-                        <input required autocomplete="false" class="uk-input @error('titulo') uk-form-danger @enderror" value="{{ old('titulo', '') }}" name="titulo" type="text" placeholder="Missão | Valores | Visão">
+                        <input required autocomplete="false" class="uk-input @error('titulo') uk-form-danger @enderror" value="{{ $valor->titulo }}" name="titulo" type="text" placeholder="Missão | Valores | Visão">
                         @error('titulo')
                         <div class="uk-text-danger">{{ $message }}</div>
                         @enderror
@@ -22,7 +23,7 @@
 
                     <div class="uk-margin">
                         <label class="uk-form-label">Descrição</label>
-                        <textarea required autocomplete="false" class="uk-textarea @error('descricao') uk-form-danger @enderror" rows="7" name="descricao" placeholder="Descrição">{{ old('descricao', '') }}</textarea>
+                        <textarea required autocomplete="false" class="uk-textarea @error('descricao') uk-form-danger @enderror" rows="7" name="descricao" placeholder="Descrição">{{ $valor->descricao }}</textarea>
                         @error('descricao')
                         <div class="uk-text-danger">{{ $message }}</div>
                         @enderror

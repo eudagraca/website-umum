@@ -10,7 +10,7 @@ class Curso extends Model
     public $primaryKey = 'id';
     protected $fillable = [
         'nome', 'ciclo', 'perfil_saida', 'plano_curicular', 'imagem','admissao',
-        'regime', 'grau_id','variantes'
+        'regime', 'grau_id','variante'
     ];
     public $timestamps = false;
 

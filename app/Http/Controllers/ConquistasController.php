@@ -61,7 +61,7 @@ class ConquistasController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('conquistas.edit',['conquistas' => Conquista::all()])->with('conquista', Conquista::find($id));
     }
 
     /**
@@ -73,7 +73,9 @@ class ConquistasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $conquista = Conquista::find($id);
+        $conquista->update($request->all());
+        return \redirect('/conquistas/create')->with('success', 'Atualizado com sucesso');
     }
 
     /**
@@ -84,6 +86,8 @@ class ConquistasController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $conq = Conquista::find($id);
+       $conq->delete();
+       return \redirect('/conquistas/create')->with('success', 'Removido com sucesso');
     }
 }

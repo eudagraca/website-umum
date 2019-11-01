@@ -9,39 +9,40 @@
                 <h4><span style="position: relative; bottom: 2px" uk-icon="plus-circle" class="uk-icon"></span>&nbsp; Conquistas</h4>
             </div>
             <hr class="uk-divider-small">
-            <form class="uk-grid-small" uk-grid action="{{route('conquistas.store')}}" method="POST" enctype="multipart/form-data">
+            <form class="uk-grid-small" uk-grid action="{{route('conquistas.update', $conquista->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Título</label>
-                    <input class="uk-input" value="{{ old('titulo', '') }}" type="text" name="titulo" placeholder="Título" required>
+                    <input class="uk-input" value="{{ $conquista->titulo }}" type="text" name="titulo" placeholder="Título" required>
                     @error('titulo')
                     <div class="uk-text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Descrição</label>
-                    <input class="uk-input" type="text" name="descricao" placeholder="Descrição" value="{{ old('descricao', '') }}" required>
+                    <input class="uk-input" type="text" name="descricao" placeholder="Descrição" value="{{ $conquista->descricao }}" required>
                     @error('descricao')
                     <div class="uk-text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Número de docentes</label>
-                    <input class="uk-input" type="number" min="1" name="docentes" placeholder="Número total de docentes" value="{{ old('docentes', '') }}" required>
+                    <input class="uk-input" type="number" min="1" name="docentes" placeholder="Número total de docentes" value="{{ $conquista->docentes }}" required>
                     @error('docentes')
                     <div class="uk-text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Número de estudantes</label>
-                    <input class="uk-input" type="number" min="1" name="estudantes" placeholder="Nḿero total de estudantes" value="{{ old('estudantes', '') }}" required>
+                    <input class="uk-input" type="number" min="1" name="estudantes" placeholder="Nḿero total de estudantes" value="{{ $conquista->estudantes }}" required>
                     @error('estudantes')
                     <div class="uk-text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Campus</label>
-                    <input class="uk-input" type="number" min="1" name="campus" placeholder="Campus Universitário" value="{{ old('campus', '') }}" required>
+                    <input class="uk-input" type="number" min="1" name="campus" placeholder="Campus Universitário" value="{{ $conquista->campus }}" required>
                     @error('campus')
                     <div class="uk-text-danger">{{ $message }}</div>
                     @enderror

@@ -68,7 +68,8 @@ class MissaoValoresController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        return view('missao.edit', ['missoes' => Valor::all()])->with('valor', Valor::find($id));
     }
 
     /**
@@ -80,7 +81,12 @@ class MissaoValoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $valor = Valor::find($id);
+        $valor->titulo = $request->input('titulo');
+        $valor->descricao = $request->input('descricao');
+        $valor->update();
+        return redirect('missao/create')->with('success',  $request->input('titulo').' atualizado com sucesso');
+ 
     }
 
     /**

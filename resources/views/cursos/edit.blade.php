@@ -2,39 +2,23 @@
 
 @section('content-admin')
 <div class="uk-card">
-    <div class="uk-alert-warning uk-alert" uk-alert="">
-        <h4><span style="position: relative; bottom: 2px" uk-icon="plus-circle" class="uk-icon"></span>&nbsp; Grau</h4>
-    </div>
-    <hr class="uk-divider-small">
+    
 
-    <!-- Grau -->
-    <form class="uk-grid-small" action="{{ route('grau.store') }}" method="POST" uk-grid>
-        @csrf
-        <div class="uk-width-1-1@s">
-            <label class="uk-form-label">Grau de escolaridade</label>
-            <input class="uk-input" type="text" name="grau" placeholder="Grau de escolaridade">
-        </div>
-        <div class="uk-width-1-1@s">
-            <button class="btn btn-outline-success uk-align-right my-2 my-sm-0 uk-margin">Gravar</button>
-        </div>
-
-    </form>
-
-    <hr>
     <!-- Curso -->
     <div class="uk-alert-warning uk-alert" uk-alert="">
         <h4><span style="position: relative; bottom: 2px" uk-icon="plus-circle" class="uk-icon"></span>&nbsp; Curso</h4>
     </div>
     <hr class="uk-divider-small">
-    <form class="uk-grid-small" action="{{ route('cursos.store') }}" method="POST" enctype="multipart/form-data" uk-grid>
+    <form class="uk-grid-small" action="{{ route('cursos.update', $curso->id) }}" method="POST" enctype="multipart/form-data" uk-grid>
         @csrf
+        @method('PUT')
         <div class="uk-width-1-1">
             <label class="uk-form-label">Nome</label>
-            <input class="uk-input" type="text" name="nome" placeholder="Nome do curso">
+        <input class="uk-input" type="text" name="nome" placeholder="Nome do curso" value="{{$curso->nome}}">
         </div>
         <div class="uk-width-1-1">
             <label class="uk-form-label">Ciclo de estudos</label>
-                <textarea  autocomplete="false" class="uk-textarea" rows="10" type="text" name="ciclo" placeholder="Ciclo de estudos" id="ciclo_estudos"></textarea>
+                <textarea  autocomplete="false" class="uk-textarea" rows="10" type="text" name="ciclo" placeholder="Ciclo de estudos" id="ciclo_estudos">{{$curso->ciclo}}</textarea>
                 <script>
                     ClassicEditor.create(document.querySelector('#ciclo_estudos'),{
 
@@ -47,7 +31,7 @@
         <div class="uk-width-1-1">
             <label class="uk-form-label">Perfil de saída</label>
             <textarea autocomplete="false" class="uk-textarea" name="perfil_saida" rows="10" type="text" name="perfil_saida" id="perfil"
-                placeholder="Objectivos e perfil de saída"></textarea>
+                placeholder="Objectivos e perfil de saída">{{$curso->perfil_saida}}</textarea>
                 <script>
                     ClassicEditor.create(document.querySelector('#perfil'),{
 
@@ -61,7 +45,7 @@
             <label class="uk-form-label">Admissão ao curso</label>
 
                 <textarea  autocomplete="false" class="uk-textarea" rows="10" type="text"
-                    name="admissao" id="admissao" placeholder="Admissão ao curso"></textarea>
+                    name="admissao" id="admissao" placeholder="Admissão ao curso">{{$curso->admissao}}</textarea>
                 <script>
                     ClassicEditor.create(document.querySelector('#admissao'),{
 
@@ -76,7 +60,7 @@
             <div class="uk-width-1-1">
                 <label id="variante-label" class="uk-form-label">Variante</label>
                 <textarea  autocomplete="false" class="uk-textarea" rows="10" type="text" name="variante" id="variantes"
-                    placeholder="Descrição"></textarea>
+                    placeholder="Descrição">{{$curso->variante}}</textarea>
                 <script>
                     ClassicEditor.create(document.querySelector('#variantes'),{
 
@@ -89,7 +73,7 @@
         </div>
         <div class="uk-width-1-2@s">
             <label class="uk-form-label">Grau</label>
-            <select class="uk-select" name="grau_id">
+            <select class="uk-select" name="grau_id" required>
                 <option selected disabled>Seleccione o grau</option>
                 @foreach ($graus as $grau)
                     <option value="{{ $grau->id }}">{{ $grau->grau }}</option>
@@ -98,19 +82,19 @@
         </div>
         <div class="uk-width-1-2@s" uk-form-custom="target: true">
             <label class="uk-form-label">O plano curricular do curso</label>
-            <input type="file" name="plano_curicular">
+        <input type="file" name="plano_curicular" value="{{$curso->plano_curicular}}">
             <input class="uk-input" type="text" placeholder="Clique ou arraste-o até aqui para seleccionar" disabled>
         </div>
 
         <div class="uk-width-1-2@s" uk-form-custom="target: true">
             <label class="uk-form-label">Imagem do curso</label>
-            <input type="file" name="imagem">
+            <input type="file" name="imagem" value="{{$curso->imagem}}">
             <input class="uk-input" type="text" placeholder="Clique ou arraste-a até aqui para seleccionar" disabled>
 
         </div>
         <div class="uk-width-1-2@s">
             <label class="uk-form-label">Regime</label>
-            <select class="uk-select" name="regime">
+            <select class="uk-select" name="regime" required>
                 <option selected disabled>Seleccione o regime do curso</option>
                 <option value="A Distância">A Distância</option>
                 <option value="Laboral">Laboral</option>
