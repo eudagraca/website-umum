@@ -19,14 +19,23 @@
                     <label class="uk-form-label">Título</label>
                     <input class="uk-input" value="{{ $banner->titulo }}" type="text" name="titulo" placeholder="Título" required>
                 </div>
+
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Descrição</label>
-                    <input class="uk-input" type="text" value="{{ $banner->descricao }}" name="descricao" placeholder="Descrição" required>
+                    <textarea autocomplete="false" class="uk-textarea" rows="10" type="text" name="descricao" placeholder="Descrição"
+                        id="descricao">{{ $banner->descricao }}</textarea>
+                    <script>
+                        ClassicEditor.create(document.querySelector('#descricao'),{
+                                    })
+                                    .catch( error => {
+                                        console.error( error );
+                                        });
+                    </script>
                 </div>
 
                 <div class="uk-width-1-1" uk-form-custom="target: true">
                     <label class="uk-form-label">Imagem do banner</label>
-                    <input type="file" name="imagem" value="{{'../../storage/banner_images/'.$banner->imagem }}">
+                    <input type="file" name="imagem" accept="image/jpeg,image/jpg,image/png" value="{{'../../storage/banner_images/'.$banner->imagem }}">
                     <input class="uk-input" type="text" value="{{'../../storage/banner_images/'.$banner->imagem }}" placeholder="Seleccione a imagem do curso" disabled>
 
                 </div>
@@ -58,7 +67,7 @@
                 <p
                     class="uk-margin-right uk-margin-remove-left uk-margin-remove-bottom uk-margin-top uk-text-truncate uk-text-lead">
                     {{ $banner->titulo }}</p>
-                <p class="uk-margin-right uk-margin-remove-left uk-margin-remove-bottom uk-margin-remove-top uk-text-truncate uk-text-normal uk-text-light">{{ $banner->descricao }}</p>
+                <p class="uk-margin-right uk-margin-remove-left uk-margin-remove-bottom uk-margin-remove-top uk-text-truncate uk-text-normal uk-text-light">{!! $banner->descricao !!}</p>
                 <span class="uk-comment-meta uk-margin-remove-top">
                     <input name="status" id="status" class="uk-checkbox uk-text-warning" type="checkbox" {{ $banner->status == 1? 'checked': '' }}><label
                         class="uk-margin-left">Status</label><br>

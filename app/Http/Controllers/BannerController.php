@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Banner;
+use App\Http\Requests\BannerRequest;
 
 class BannerController extends Controller
 {
@@ -34,7 +35,7 @@ class BannerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BannerRequest $request)
     {
 
         // File upload
@@ -104,15 +105,8 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BannerRequest $request, $id)
     {
-        //
-         $this->validate($request, [
-            'titulo' => 'required',
-            'descricao' => 'required',
-            'imagem' => 'image|nullable|max:1999|mimes:png,jpg'
-        ]);
-
         // File upload
         if($request->hasFile('imagem')){
             //Pegar o nome com extensao

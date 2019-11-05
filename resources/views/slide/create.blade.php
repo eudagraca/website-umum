@@ -20,7 +20,7 @@
                 </div>
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Descrição</label>
-                    <textarea  autocomplete="false" class="uk-textarea" rows="10" type="text" name="descricao" placeholder="Descrição" id="descricao"></textarea>
+                    <textarea  autocomplete="false" class="uk-textarea" rows="10" type="text" name="descricao" placeholder="Descrição" id="descricao">{{ old('descricao', '') }}</textarea>
                 <script>
                     ClassicEditor.create(document.querySelector('#descricao'),{
 
@@ -33,7 +33,7 @@
 
                 <div class="uk-width-1-1" uk-form-custom="target: true">
                     <label class="uk-form-label">Imagem do banner</label>
-                    <input type="file" name="imagem" required>
+                    <input type="file" accept="image/jpeg,image/jpg,image/png" name="imagem" required>
                     <input class="uk-input" type="text" placeholder="Seleccione a imagem do curso" disabled>
 
                 </div>
@@ -66,8 +66,8 @@
                     class="uk-margin-right uk-margin-remove-left uk-margin-remove-bottom uk-margin-top uk-text-truncate uk-text-normal uk-text-bold">
                     {{ $banner->titulo }}</p>
                 <p
-                    class="uk-margin-right uk-margin-remove-left uk-margin-remove-bottom uk-margin-remove-top uk-text-truncate uk-text-small uk-text-light">
-                    {!! $banner->descricao !!}</p>
+                    class="uk-margin-small-right uk-margin-remove-left uk-margin-remove-bottom uk-margin-remove-top uk-text-truncate uk-text-small uk-text-light">
+                    {!! Str::limit($banner->descricao, 80) !!}</p>
                 <span class="uk-comment-meta uk-margin-remove-top">
                     <input name="status" id="status" class="uk-checkbox uk-text-warning" type="checkbox"
                         {{ $banner->status == 1? 'checked': '' }}><label class="uk-margin-left uk-text-small">Status</label><br>

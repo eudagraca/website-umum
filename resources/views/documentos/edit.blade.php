@@ -21,10 +21,19 @@
                     <label class="uk-form-label">Nome</label>
                     <input class="uk-input" type="text" name="nome" value="{{ $doc->nome }}" placeholder="Nome do documento" required>
                 </div>
+
                 <div class="uk-width-1-1">
                     <label class="uk-form-label">Descrição</label>
-                    <textarea class="uk-textarea" rows="3" type="text" name="descricao"
-                        placeholder="Descrição do documento">{{ $doc->descricao }}</textarea>
+                    <textarea autocomplete="false" class="uk-textarea @error('descricao') uk-form-danger @enderror" rows="3"
+                        id="descricao" name="descricao" placeholder="Descrição do documento">{{ $doc->descricao }}</textarea>
+                    @error('descricao')
+                    <div class="uk-text-danger">{{ $message }}</div>
+                    @enderror
+                    <script>
+                        ClassicEditor.create(document.querySelector('#descricao'),{}).catch( error => {
+                                                console.error( error );
+                                                });
+                    </script>
                 </div>
                 <div class="uk-width-1-2@s">
                     <label class="uk-form-label">Palavra chave</label>
@@ -33,7 +42,7 @@
                 <div class="uk-width-1-2@s" uk-form-custom="target: true">
                     <label class="uk-form-label">Documento</label>
 
-                    <input type="file" name="ficheiro">
+                    <input type="file" accept="application/pdf" name="ficheiro">
                     <input class="uk-input" type="text" value="{{ $doc->ficheiro }}" placeholder="Clique ou arraste-o até aqui para seleccionar" disabled>
 
                 </div>
@@ -54,7 +63,7 @@
                 style="border: 1px solid rgb(223, 223, 223); border-radius: 5px;">
                 <div class="uk-card-body uk-padding-small uk-box-shadow-hover-large">
                     <h3 class="uk-text-bold uk-h4">{{ $doc->nome }}</h3>
-                    <p>{{ Str::limit($doc->descricao, 150) }}</p>
+                    <p>{!! Str::limit($doc->descricao, 150) !!}</p>
 
                     <span class="uk-comment-meta uk-margin-remove-top">
                         <div class="uk-align-right uk-margin-remove-top uk-margin-right"

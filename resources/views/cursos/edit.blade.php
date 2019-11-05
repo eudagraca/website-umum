@@ -2,7 +2,7 @@
 
 @section('content-admin')
 <div class="uk-card">
-    
+
 
     <!-- Curso -->
     <div class="uk-alert-warning uk-alert" uk-alert="">
@@ -82,13 +82,13 @@
         </div>
         <div class="uk-width-1-2@s" uk-form-custom="target: true">
             <label class="uk-form-label">O plano curricular do curso</label>
-        <input type="file" name="plano_curicular" value="{{$curso->plano_curicular}}">
+        <input type="file" accept="application/pdf" name="plano_curicular" value="{{$curso->plano_curicular}}">
             <input class="uk-input" type="text" placeholder="Clique ou arraste-o até aqui para seleccionar" disabled>
         </div>
 
         <div class="uk-width-1-2@s" uk-form-custom="target: true">
             <label class="uk-form-label">Imagem do curso</label>
-            <input type="file" name="imagem" value="{{$curso->imagem}}">
+            <input type="file" accept="image/jpeg,image/jpg,image/png" name="imagem" value="{{$curso->imagem}}">
             <input class="uk-input" type="text" placeholder="Clique ou arraste-a até aqui para seleccionar" disabled>
 
         </div>

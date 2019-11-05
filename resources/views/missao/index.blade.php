@@ -7,7 +7,7 @@
         <div class="uk-width-1-3@s">
             <div class="uk-card-body uk-text-justify uk-text-break">
                 <h3 class="uk-card-title uk-text-bold uk-text-muted">{{ $valor->titulo }}</h3>
-                <p class="uk-text-secondary">{{ Str::limit($valor->descricao, 150)}}</p>
+                <p class="uk-text-secondary">{!! Str::limit($valor->descricao, 150) !!}</p>
             </div>
             <a href="/missao"><span style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;"
                     class="linkSpanner"></span></a>

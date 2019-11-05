@@ -20,13 +20,19 @@
                         @enderror
                     </div>
 
-                    <div class="uk-margin">
+                    <div class="uk-margin"">
                         <label class="uk-form-label">Descrição</label>
-                        <textarea required autocomplete="false" class="uk-textarea @error('descricao') uk-form-danger @enderror" rows="7" name="descricao" placeholder="Descrição">{{ old('descricao', '') }}</textarea>
-                        @error('descricao')
-                        <div class="uk-text-danger">{{ $message }}</div>
-                        @enderror
+                        <textarea  autocomplete="false" class="uk-textarea @error('descricao') uk-form-danger @enderror" rows="7"
+                            name="descricao" placeholder="Descrição" id="descricao">{{ old('descricao', '') }}</textarea>
+                        <script>
+                            ClassicEditor.create(document.querySelector('#descricao'),{
+                                        })
+                            .catch( error => {
+                                console.error( error );
+                            });
+                        </script>
                     </div>
+
                     <div class="uk-width-1-1@s">
                         <button class="btn btn-outline-success uk-align-right my-2 my-sm-0 uk-margin">Gravar</button>
                     </div>
@@ -43,7 +49,7 @@
                     style="border: 1px solid rgb(223, 223, 223); border-radius: 5px;">
                 <div class="uk-card-body uk-padding-small uk-box-shadow-hover-large">
                     <h3 class="uk-text-bold uk-h4">{{ $missao->titulo }}</h3>
-                        <p class="uk-margin-remove">{{ Str::limit($missao->descricao, 50) }}</p>
+                        <p class="uk-margin-remove">{!! Str::limit($missao->descricao, 50) !!}</p>
 
                         <span class="uk-comment-meta uk-margin-remove-top">
                             <div class="uk-align-right uk-display-inline-block uk-margin-remove-top uk-margin-right" style="margin-bottom: 5px !important">

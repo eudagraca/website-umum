@@ -44,7 +44,7 @@
                                         <span class="uk-comment-meta">
 
                                             <small class="uk-transition-fade uk-transition-slide-right-small uk-position-bottom-right"
-                                                style="bottom: 10px; right: 10px"><span style="color: #F90F47 !important;" uk-icon="arrow-right"
+                                                style="bottom: 10px; right: 10px"><span style="color: #e33530 !important;" uk-icon="arrow-right"
                                                     class="uk-icon">mais detalhes </span></small>
                                         </span>
 
@@ -110,7 +110,7 @@
                                         <span class="uk-comment-meta">
 
                                             <small class="uk-transition-fade uk-transition-slide-right-small uk-position-bottom-right"
-                                                style="bottom: 10px; right: 10px"><span style="color: #F90F47 !important;" uk-icon="arrow-right"
+                                                style="bottom: 10px; right: 10px"><span style="color: #e33530 !important;" uk-icon="arrow-right"
                                                     class="uk-icon">mais detalhes </span></small>
                                         </span>
 
@@ -156,9 +156,9 @@
 
 
                         @forelse ($cursos as $curso)
-                            @if($curso->grau->grau == "Mestrado")
-                            <li>
-                                <div>
+                        @if($curso->grau->grau == "Mestrado")
+                        <li>
+                            <div>
 
                                 <div class="uk-card uk-card-default uk-card-body card-k uk-border-rounded uk-text-break uk-transition-toggle uk-padding-remove uk-box-shadow-hover-large uk-grid-collapse uk-grid "
                                     style="border: 1px solid rgb(231, 231, 231);">
@@ -166,8 +166,8 @@
                                     <div style="border-radius: 4px 0px 0px 4px !important"
                                         class="uk-card-media-top uk-cover-container uk-width-1-3  uk-margin-right">
                                         <div uk-cover="" class="uk-card-media-right uk-cover" style="width: 130px; height: 130px;">
-                                            <img uk-img="" data-type="image" uk-cover="" src="storage/curso_images/{{$curso->imagem}}" class="uk-cover"
-                                                style="width: 200px; height: 100%;">
+                                            <img uk-img="" data-type="image" uk-cover="" src="storage/curso_images/{{$curso->imagem}}"
+                                                class="uk-cover" style="width: 200px; height: 100%;">
                                             <canvas width="80" height="50"></canvas>
                                         </div>
                                     </div>
@@ -178,21 +178,19 @@
                                         <p>{!! Str::limit($curso->perfil_saida, 50) !!}</p>
                                         <span class="uk-comment-meta">
 
-                                            <small class="uk-transition-fade 
-                                             uk-margin uk-transition-slide-right-small uk-position-bottom-right"
-                                                style="bottom: 10px; right: 10px"><span style="color: #F90F47 !important;" uk-icon="arrow-right"
+                                            <small class="uk-transition-fade uk-transition-slide-right-small uk-position-bottom-right"
+                                                style="bottom: 10px; right: 10px"><span style="color: #e33530 !important;" uk-icon="arrow-right"
                                                     class="uk-icon">mais detalhes </span></small>
                                         </span>
 
-                                        <a href="{{ route('cursos.show', $curso->id) }}"><span style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;"
+                                        <a href="{{ route('cursos.show', $curso->id) }}"><span
+                                                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;"
                                                 class="linkSpanner"></span></a>
                                     </div>
                                 </div>
-                                
                             </div>
-                            </li>
-                            @endif
-
+                        </li>
+                        @endif
                         @empty
                         <p class="uk-text-warning"> Não temos cursos</p>
                         @endforelse

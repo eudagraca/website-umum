@@ -24,7 +24,7 @@ UMUM
                 <h4 class="uk-text-justify uk-heading-bullet uk-text-bold uk-text-capitalize">{{ $content->titulo }}</h4>
 
                 <p>
-                    {{$content->descricao}}
+                    {!! $content->descricao !!}
                 </p>
 
         </div>

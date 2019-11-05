@@ -26,18 +26,17 @@ class BannerRequest extends FormRequest
         return [
             'titulo' => 'required',
             'descricao' => 'required',
-            'imagem' => 'image|required|max:1999'
+            'imagem' => 'image|nullable|max:1999|mimes:png,jpg,jpeg'
         ];
     }
 
     public function messages()
     {
         return [
-
             'titulo.required' => 'O campo do Titulo deve estar preenchido',
             'descricao.required' => 'O campo da Descrição deve ser preenchido',
             'unique' => 'O(a) :attribute já foi registado ',
-
+            'imagem.mimes:png,jpg' => 'A imagem deve ser do tipo jpg ou png'
         ];
     }
 

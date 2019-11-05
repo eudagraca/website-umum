@@ -22,6 +22,8 @@ UMUM
              {{-- Remover a opção de criar paginas  <li><a href="{{ route('pages.create') }}">PÁGINAS</a></li>
               --}}  <li><a href="{{ route('register') }}">USUÁRIO</a></li>
 
+              {{-- Remover??? Nao teremos páginas????? --}}
+
             </ul>
         </div>
         <div class="uk-width-expand@m">

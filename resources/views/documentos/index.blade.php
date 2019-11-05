@@ -30,7 +30,7 @@ UMUM
 
                     <h3 class="uk-margin-remove-top uk-margin-remove-bottom uk-text-bold"> {{$item->nome}}</h3>
                     <p class="uk-margin-remove-bottom">
-                        {{$item->descricao}}
+                        {!!$item->descricao !!}
                     </p>
                     <div class="uk-overflow-auto uk-border-rounded uk-margin-small-top">
                         <table class="uk-table uk-table-middle uk-table-small uk-dark">
